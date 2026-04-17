@@ -1,35 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const themeIcon = themeToggleBtn.querySelector('i');
-
-    // Function to set theme
-    const setTheme = (theme) => {
-        if (theme === 'dark') {
-            htmlElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            htmlElement.removeAttribute('data-theme');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        }
-        // Save to localStorage
-        localStorage.setItem('selected-theme', theme);
-    };
-
-    // Initialize theme from localStorage or default to dark (since original image is dark)
-    const savedTheme = localStorage.getItem('selected-theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else {
-        // Default to dark mode based on the design provided
-        setTheme('dark');
-    }
-
-    // Toggle button click event
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        setTheme(currentTheme);
-    });
-});
+document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0044\u004F\u004D\u0043\u006F\u006E\u0074\u0065\u006E\u0074\u004C\u006F\u0061\u0064\u0065\u0064",()=>{let _0xg76d;const themeToggleBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0074\u0068\u0065\u006D\u0065\u002D\u0074\u006F\u0067\u0067\u006C\u0065");_0xg76d='\u0065\u006F\u0068\u0062\u0064\u0066';let _0xc9g25e;const htmlElement=document['\u0064\u006F\u0063\u0075\u006D\u0065\u006E\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074'];_0xc9g25e=662102^662098;let _0x542d;const themeIcon=themeToggleBtn['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0069");_0x542d=(330718^330716)+(282814^282807);var _0xaga49b=(640556^640554)+(892141^892139);const setTheme=theme=>{if(theme==="krad".split("").reverse().join("")){htmlElement['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("\u0064\u0061\u0074\u0061\u002D\u0074\u0068\u0065\u006D\u0065","\u0064\u0061\u0072\u006B");themeIcon['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0066\u0061\u002D\u006D\u006F\u006F\u006E");themeIcon['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0066\u0061\u002D\u0073\u0075\u006E");}else{htmlElement['\u0072\u0065\u006D\u006F\u0076\u0065\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("emeht-atad".split("").reverse().join(""));themeIcon['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("nus-af".split("").reverse().join(""));themeIcon['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0066\u0061\u002D\u006D\u006F\u006F\u006E");}localStorage['\u0073\u0065\u0074\u0049\u0074\u0065\u006D']("emeht-detceles".split("").reverse().join(""),theme);};_0xaga49b=726254^726251;const savedTheme=localStorage['\u0067\u0065\u0074\u0049\u0074\u0065\u006D']("\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u002D\u0074\u0068\u0065\u006D\u0065");if(savedTheme){setTheme(savedTheme);}else{setTheme("\u0064\u0061\u0072\u006B");}themeToggleBtn['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("kcilc".split("").reverse().join(""),()=>{const currentTheme=htmlElement['\u0067\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("emeht-atad".split("").reverse().join(""))==="\u0064\u0061\u0072\u006B"?"\u006C\u0069\u0067\u0068\u0074":"\u0064\u0061\u0072\u006B";setTheme(currentTheme);});const SUPABASE_URL="oc.esabapus.pcjqsdwjieguxyzmtlxl//:sptth".split("").reverse().join("");const SUPABASE_ANON_KEY="N2NchWiC_QdBH2RnNqOzIqmVazN8-x2_elbahsilbup_bs".split("").reverse().join("");const supabase=window['\u0073\u0075\u0070\u0061\u0062\u0061\u0073\u0065']['\u0063\u0072\u0065\u0061\u0074\u0065\u0043\u006C\u0069\u0065\u006E\u0074'](SUPABASE_URL,SUPABASE_ANON_KEY);let _0xe973c;const productGrid=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("dirg-tcudorp".split("").reverse().join(""));_0xe973c=(639328^639333)+(887342^887338);async function _0xd99c(){try{const{'\u0064\u0061\u0074\u0061':products,'\u0065\u0072\u0072\u006F\u0072':error}=await supabase['\u0066\u0072\u006F\u006D']("\u0070\u0072\u006F\u0064\u0075\u0063\u0074\u0073")['\u0073\u0065\u006C\u0065\u0063\u0074']("\u002A");if(error){console['\u0065\u0072\u0072\u006F\u0072'](":esabapuS u\u1EC7il \u1EEFd y\u1EA5l ihk i\u1ED7L".split("").reverse().join(""),error);productGrid['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=">p/<.m\u1EA9hp n\u1EA3s u\u1EC7il \u1EEFd i\u1EA3t ihk i\u1ED7L>p<".split("").reverse().join("");return;}if(!products||products['\u006C\u0065\u006E\u0067\u0074\u0068']===(890046^890046)){productGrid['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=">p/<.o\xE0n m\u1EA9hp n\u1EA3s \xF3c a\u01B0hC>p<".split("").reverse().join("");return;}_0x9g35bd(products);}catch(err){console['\u0065\u0072\u0072\u006F\u0072']("\u004C\u1ED7\u0069\u0020\u006B\u0068\u00F4\u006E\u0067\u0020\u0078\u00E1\u0063\u0020\u0111\u1ECB\u006E\u0068\u003A",err);productGrid['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="\u003C\u0070\u003E\u0110\u00E3\u0020\u0078\u1EA3\u0079\u0020\u0072\u0061\u0020\u006C\u1ED7\u0069\u0020\u006B\u0068\u0069\u0020\u0074\u1EA3\u0069\u0020\u0064\u1EEF\u0020\u006C\u0069\u1EC7\u0075\u002E\u003C\u002F\u0070\u003E";}}function _0x9g35bd(products){productGrid['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']='';products['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](product=>{const _0x1a337b=`
+                <div class="card">
+                    <img src="${product['\u0069\u006D\u0061\u0067\u0065\u005F\u0075\u0072\u006C']||"egamI+oN=txet?002x004/moc.redlohecalp.aiv//:sptth".split("").reverse().join("")}" alt="${product['\u0074\u0069\u0074\u006C\u0065']}" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">${product['\u0074\u0069\u0074\u006C\u0065']||"n\xEAt \xF3c a\u01B0hc m\u1EA9hp n\u1EA3S".split("").reverse().join("")}</h3>
+                        <p class="card-desc">${product['\u0064\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E']||''}</p>
+                    </div>
+                    <div class="card-price">${_0xc9636b(product['\u0070\u0072\u0069\u0063\u0065'])}đ</div>
+                    <button class="btn-buy" onclick="buyProduct('${product['\u0069\u0064']}')">Mua ngay</button>
+                </div>
+            `;productGrid['\u0069\u006E\u0073\u0065\u0072\u0074\u0041\u0064\u006A\u0061\u0063\u0065\u006E\u0074\u0048\u0054\u004D\u004C']("dneerofeb".split("").reverse().join(""),_0x1a337b);});}function _0xc9636b(price){if(!price&&price!==(517069^517069))return"\u0030";return price['\u0074\u006F\u0053\u0074\u0072\u0069\u006E\u0067']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005C\u0042\u0028\u003F\u003D\u0028\u005C\u0064\u007B\u0033\u007D\u0029\u002B\u0028\u003F\u0021\u005C\u0064\u0029\u0029','\u0067'),"\u002E");}_0xd99c();});function buyProduct(productId){alert("\u0042\u1EA1\u006E\u0020\u0111\u0061\u006E\u0067\u0020\u0063\u0068\u1ECD\u006E\u0020\u006D\u0075\u0061\u0020\u0073\u1EA3\u006E\u0020\u0070\u0068\u1EA9\u006D\u0020\u0049\u0044\u003A\u0020"+productId);}
