@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
     <div class="container">
@@ -28,7 +30,6 @@
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <button class="btn-add">Thêm Tool</button>
             </div>
         </header>
 
@@ -44,16 +45,10 @@
             </button>
         </div>
 
-        <!-- Pinned Section -->
-        <div class="section">
-            <h2 class="section-header">Đã ghim</h2>
-            <!-- Pinned content if any -->
-        </div>
-
         <!-- All Tools Section -->
         <div class="section">
             <h2 class="section-header">Tất cả công cụ</h2>
-            
+
             <div class="grid" id="product-grid">
                 <!-- Data will be loaded here from Supabase -->
                 <p>Đang tải dữ liệu...</p>
@@ -63,4 +58,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
