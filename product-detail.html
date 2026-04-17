@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - Tổng Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .detail-container {
+            display: flex;
+            gap: 3rem;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .detail-image-wrapper {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+
+        .product-features {
+            background: var(--input-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-features h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+        }
+
+        .product-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li i {
+            color: var(--badge-green);
+        }
+
+        .detail-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .detail-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .detail-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: var(--input-bg);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            background: var(--card-bg);
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+
+        .info-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .desc-box {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .desc-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .detail-desc {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-buy-large {
+            flex: 2;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-buy-large:hover {
+            background: var(--accent-blue-hover);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            flex: 1;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-primary);
+            background: var(--tag-bg);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            transition: color 0.2s;
+            padding: 0.5rem 0;
+        }
+
+        .btn-back:hover {
+            color: var(--text-primary);
+        }
+
+        #loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-container {
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 2rem;
+            }
+
+            .detail-title {
+                font-size: 1.8rem;
+            }
+
+            .detail-image-wrapper {
+                max-width: 100%;
+            }
+
+            .info-card {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <a href="tool-dashboard.html"
+                    style="text-decoration: none; display: flex; align-items: center; gap: 1rem; color: inherit;">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Tổng Tool</h1>
+                        <p>Trang chủ các công cụ nội bộ</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <a href="tool-dashboard.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
+        </a>
+
+        <div id="loading">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+            <p>Đang tải dữ liệu sản phẩm...</p>
+        </div>
+
+        <div id="product-detail-view" class="detail-container" style="display: none;">
+            <div class="detail-image-wrapper">
+                <img id="detail-image" src="" alt="Product Image" class="detail-image">
+
+                <div class="product-features">
+                    <h3><i class="fa-solid fa-star"></i> Điểm nổi bật</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Cam kết chất lượng cao nhất</li>
+                        <li><i class="fa-solid fa-check"></i> Hỗ trợ kỹ thuật 24/7</li>
+                        <li><i class="fa-solid fa-check"></i> Cập nhật tính năng miễn phí</li>
+                        <li><i class="fa-solid fa-check"></i> Giao diện thân thiện dễ sử dụng</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="detail-content">
+                <div class="detail-badge">MỚI CẬP NHẬT</div>
+                <h1 id="detail-title" class="detail-title"></h1>
+                <div id="detail-price" class="detail-price"></div>
+
+                <div class="info-card">
+                    <div class="info-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <strong>Bảo hành trọn đời</strong>
+                            <p>An tâm sử dụng lâu dài</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <strong>Kích hoạt tức thì</strong>
+                            <p>Nhận key tự động ngay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desc-box">
+                    <h3>Thông tin sản phẩm</h3>
+                    <div id="detail-desc" class="detail-desc"></div>
+                </div>
+
+                <div class="package-selector">
+                    <span class="qty-label">Chọn thời hạn:</span>
+                    <div class="package-options">
+                        <label class="package-option">
+                            <input type="radio" name="plan" value="1_day" data-key="price_1_day" data-name="1 Ngày">
+                            <div class="package-card">
+                                <span class="package-name">1 Ngày</span>
+                            </div>
+                        </label>
+                        <label class="package-option">
+                            <input type="radio" name="plan" value="1_week" data-key="price_1_week" data-name="1 Tuần">
+                            <div class="package-card">
+                                <span class="package-name">1 Tuần</span>
+                            </div>
+                        </label>
+                        <label class="package-option">
+                            <input type="radio" name="plan" value="1_month" data-key="price_1_month" data-name="1 Tháng"
+                                checked>
+                            <div class="package-card">
+                                <span class="package-name">1 Tháng</span>
+                            </div>
+                        </label>
+                        <label class="package-option">
+                            <input type="radio" name="plan" value="1_year" data-key="price_1_year" data-name="1 Năm">
+                            <div class="package-card">
+                                <span class="package-name">1 Năm</span>
+                                <span class="package-discount">-16%</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <span class="qty-label">Số lượng:</span>
+                    <div class="quantity-controls">
+                        <button id="btn-decrease-qty" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" id="product-qty" class="qty-input" value="1" min="1" max="99">
+                        <button id="btn-increase-qty" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-buy-now" class="btn-buy-large"><i class="fa-solid fa-cart-shopping"></i> Mua
+                        ngay</button>
+                    <button class="btn-outline"
+                        onclick="window.open('https://www.facebook.com/messages/t/617400058125386/?text=Xin chào mình cần tư vấn về sản phẩm của bạn,bạn hỗ trợ mình nhé', '_blank')"><i
+                            class="fa-solid fa-comments"></i> Tư vấn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal-content">
+            <span class="close-modal" id="closePaymentModal"><i class="fa-solid fa-xmark"></i></span>
+
+            <div id="payment-step-1" class="payment-step">
+                <div class="payment-header">
+                    <h2>Thanh Toán</h2>
+                    <p>Vui lòng nhập số điện thoại để hệ thống gửi thông báo kích hoạt tự động</p>
+                </div>
+                <div class="payment-body">
+                    <div class="input-group">
+                        <label for="customer-phone">Số điện thoại liên hệ</label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="customer-phone" placeholder="Ví dụ: 0912345678" autocomplete="off">
+                        </div>
+                        <div id="phone-error" class="error-msg"><i class="fa-solid fa-circle-exclamation"></i> Số điện
+                            thoại không hợp lệ (10 số, bắt đầu bằng 0)</div>
+                    </div>
+                    <button id="btn-confirm-phone" class="btn-buy-large modal-btn">
+                        Xác nhận
+                    </button>
+                </div>
+            </div>
+
+            <div id="payment-step-2" class="payment-step" style="display: none;">
+                <div class="payment-header">
+                    <h2>Quét Mã QR</h2>
+                    <p>Mở ứng dụng ngân hàng trên điện thoại và quét mã bên dưới để thanh toán</p>
+                </div>
+                <div class="payment-body">
+                    <div class="qr-container">
+                        <div class="qr-wrapper">
+                            <img id="qr-code-img" src="" alt="Mã QR Thanh toán">
+                        </div>
+                    </div>
+
+                    <div class="payment-info-box">
+                        <div class="info-row">
+                            <span class="info-label">Số tiền:</span>
+                            <span id="qr-amount" class="info-value highlight"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Nội dung (Bắt buộc):</span>
+                            <span id="qr-content" class="info-value"></span>
+                        </div>
+                    </div>
+
+                    <button id="btn-paid-confirm" class="btn-outline" style="width: 100%;">
+                        <i class="fa-solid fa-check"></i> Tôi đã thanh toán xong
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đã gom chung code vào script.js -->
+    <script src="script.js"></script>
+</body>
+
+</html>
